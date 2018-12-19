@@ -4,7 +4,7 @@ import { updatePatientInfo, updateLastPage } from '../store/patient-information'
 import {connect} from 'react-redux'
 
 
-class Contact extends Component {
+class PatientContactForm extends Component {
   constructor(){
     super()
     this.state = {
@@ -24,9 +24,9 @@ class Contact extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.props.history)
     const { street, city, state, zip } = this.state
     this.props.updateInfo({address: `${street} ${city} ${state} ${zip}`})
+    this.props.history.push('/signup')
   }
 
   render(){
@@ -39,7 +39,7 @@ class Contact extends Component {
             State: <input type="text" name="state"/><br/>
             Zip: <input type="text" name="zip"/><br/>
         </form>
-        <NavLink exact to="/signup"><button onSubmit={this.handleSubmit}>save and continue</button></NavLink>
+        <button onClick={this.handleSubmit}>save and continue</button>
         <button onClick={this.props.changePage}>back</button>
       </div>)
   }
@@ -48,9 +48,8 @@ class Contact extends Component {
 
 const mapDispatch = dispatch => {
   return {
-    updateInfo: (change) => { dispatch(updatePatientInfo(change)) },
-    changePage: page => { dispatch(updateLastPage('info'))}
+    updateInfo: (change) => { dispatch(updatePatientInfo(change)) }
   }
 }
 
-export default withRouter(connect(null, mapDispatch)(Contact))
+export default withRouter(connect(null, mapDispatch)(PatientContactForm))

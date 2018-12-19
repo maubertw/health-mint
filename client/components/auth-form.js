@@ -11,10 +11,10 @@ const AuthForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
+      <form onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
       <div>
         {
-          name === 'login' && <p>Please choose an email and password for this account.  Your email will be used as the username for this account</p>
+          name === 'signup' && <p>Please choose an email and password for this account.  Your email will be used as the username for this account</p>
         }
       </div>
         <div>
@@ -74,11 +74,13 @@ const mapSignup = state => {
 
 const mapDispatchSignup = dispatch => {
   return {
-    handleSubmit(evt) {
+    handleSubmit(evt, patient) {
       evt.preventDefault()
-      const { email, address, age, first, last, middle, password}
+      console.log('patient', patient)
+      const email = evt.target.email.value
+      const password = evt.target.password.value
       const formName = evt.target.name
-      dispatch(auth(email, password, formName, {address, age, first, middle, last}))
+      dispatch(auth(email, password, formName, patient))
     }
   }
 }

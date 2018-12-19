@@ -1,40 +1,22 @@
 import React, { Component } from 'react'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import Info from './patient-info.js'
-import Contact from './patient-contact.js'
-import {connect} from 'react-redux'
-import { updateLastPage } from '../store/patient-information'
+import PatientInfoForm from './patient-info.js'
+import PatientContactForm from './patient-contact.js'
 
 
-class Walkthrough extends Component {
 
-
-  // changeView = (e, page) => {
-  //   e.preventDefault()
-  //   this.setState({
-  //     page
-  //   })
-  // }
-
-  render (){
-    const { page } = this.props
+const Walkthrough = (props) => {
+    const page = props.history.location.pathname
     return (
       <div>
         <h1>HealthMint Sign Up</h1>
         {
-          page === 'info' ? <Info changeView={this.changeView}/> : <Contact changeView={this.changeView}/>
+          page === '/walkthrough/info' ? <PatientInfoForm /> : <PatientContactForm />
         }
       </div>
     )
   }
-}
-
-const mapState = state => {
-  return {
-    page: state.patientInfo.page
-  }
-}
 
 
 
-export default  withRouter(connect(mapState)(Walkthrough))
+export default  withRouter(Walkthrough)

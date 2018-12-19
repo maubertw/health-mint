@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import {withRouter, NavLink } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import { updatePatientInfo, updateLastPage } from '../store/patient-information'
 import {connect} from 'react-redux'
 
 
 
 
-class Info extends Component {
+class PatientInfoForm extends Component {
 
   handleChange = (e) => {
     e.preventDefault()
     this.props.updateInfo({[e.target.name]: e.target.value})
+  }
+
+  nextPage = () => {
+    this.props.history.push('/walkthrough/contact')
   }
 
   render(){
@@ -33,13 +37,10 @@ class Info extends Component {
               }
             </select>
         </form>
-        <button onClick={() => this.props.changePage('contact')} >Save and Continue</button>
+        <button onClick={this.nextPage} >Save and Continue</button>
       </div>)
   }
 }
-
-
-
 
 
 const mapDispatch = dispatch => {
@@ -49,4 +50,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(null, mapDispatch)(Info)
+export default withRouter(connect(null, mapDispatch)(PatientInfoForm))
