@@ -26,7 +26,7 @@ class PatientContactForm extends Component {
     e.preventDefault()
     const { street, city, state, zip } = this.state
     this.props.updateInfo({address: `${street} ${city} ${state} ${zip}`})
-    this.props.history.push('/signup')
+    this.props.history.push('/walkthrough/signup')
   }
 
   render(){

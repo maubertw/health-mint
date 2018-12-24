@@ -12,6 +12,10 @@ router.post('/login', async (req, res, next) => {
       console.log('Incorrect password for user:', req.body.email)
       res.status(401).send('Wrong username and/or password')
     } else {
+      const user = await User.findOne({where: {
+        email: req.user.email
+      }})
+      console.log('ussssererere', user)
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {
@@ -21,6 +25,7 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
+    console.log('reqqqq', req.body)
     const user = await User.create(req.body)
     req.login(user, err => (err ? next(err) : res.json(user)))
   } catch (err) {
@@ -38,7 +43,11 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/me', (req, res) => {
+router.get('/me', async (req, res) => {
+  const user = await User.findOne({where: {
+    email: req.user.email
+  }})
+  console.log('ussssererere', user)
   res.json(req.user)
 })
 

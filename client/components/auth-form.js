@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {NavLink} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -10,8 +11,13 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
+    <div className='splash'>
+      <div className='login-box'>
+      <div className='splash-header'>
+      <h1 className='splash-title teal'>Welcome to HealthMint!</h1>
+      </div>
+      <h1 className='teal'>Login</h1>
+      <form className='login-form' onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
       <div>
         {
           name === 'signup' && <p>Please choose an email and password for this account.  Your email will be used as the username for this account</p>
@@ -29,12 +35,13 @@ const AuthForm = props => {
           </label>
           <input name="password" type="password" />
         </div>
-        <div>
+
           <button type="submit">{displayName}</button>
-        </div>
+
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <NavLink to='/walkthrough/info' className='teal signup-link'><h1> or SignUp!</h1></NavLink>
+      </div>
     </div>
   )
 }

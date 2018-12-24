@@ -4,11 +4,9 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log('hellllooooo')
     const users = await User.findAll({where: {isAdmin: false},
       attributes: ['id', 'email', 'first', 'last', 'middle', 'address', 'age']
     })
-    console.log('users!!!!!!!', users)
     res.json(users)
   } catch (err) {
     next(err)

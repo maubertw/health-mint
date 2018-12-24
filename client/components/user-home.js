@@ -21,13 +21,17 @@ class UserHome extends Component {
     return (
       <div>
         <h3>Welcome, {email}</h3>
+        {
+          isAdmin ? <p>All Current HealthMint Patients</p> :
+          <p>Your information</p>
+        }
         <table>
           <thead>
             <tr>
-              <td>NAME</td>
-              <td>EMAIL</td>
-              <td>ADDRESS</td>
-              <td>AGE</td>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              <th>ADDRESS</th>
+              <th>AGE</th>
             </tr>
           </thead>
           <tbody>
