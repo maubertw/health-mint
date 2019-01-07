@@ -16,14 +16,14 @@ class UserHome extends Component {
 
 
   render(){
-    const {email, isAdmin } = this.props.user
+    const { email, isAdmin } = this.props.user
     const { patientList, user } = this.props
     return (
-      <div>
-        <h3>Welcome, {email}</h3>
+      <div className='userhome'>
+        <h3>Welcome, {email}!</h3>
         {
           isAdmin ? <p>All Current HealthMint Patients</p> :
-          <p>Your information</p>
+          <p>Your Information</p>
         }
         <table>
           <thead>
@@ -43,7 +43,7 @@ class UserHome extends Component {
               }
           </tbody>
         </table>
-      </div>
+        </div>
     )
   }
 }

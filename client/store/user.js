@@ -35,7 +35,7 @@ export const me = () => async dispatch => {
 export const auth = (email, password, method, info) => async dispatch => {
   let res
   try {
-    console.log( 'info', email, password)
+    //console.log( 'info', email, password)
       if(method === 'signup'){
         const {address, age, first, last, middle} = info
           res = await axios.post(`/auth/${method}`, {email, password, address, age, first, middle, last})

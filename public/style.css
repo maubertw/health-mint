@@ -14,14 +14,30 @@ nav div{
 .nav-bar {
   display: flex;
   justify-content: space-between;
-
   width: 99vw;
   padding: 0 30px;
   align-items: baseline;
-  /* background-color: #ccffeb; */
   background-color: #b3ffb3;
+}
 
+.userhome {
+  padding: 40px;
+}
 
+table {
+
+}
+
+td {
+  padding: 4px;
+}
+
+tr:nth-child(even) {
+  background: #F4F2E6
+}
+
+tr:nth-child(odd) {
+  background: #FCFBF4
 }
 
 .splash {
@@ -141,18 +157,6 @@ a {
 
 }
 
-/* label {
-  display: block;
-}
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-} */
 
 
