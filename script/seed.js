@@ -9,17 +9,15 @@ async function seed() {
 
   const users = await Promise.all([
     User.create({email: 'mary@mary.com', password: 'mary', isAdmin: true}),
-    User.create({email: 'someone@gmail.com', password: '123', first: 'Sally', middle: 'V', last: 'Truitt', age: 20, address: '1729 nw 11th rd, Gainesville, FL 32695'}),
-    User.create({email: 'BlueTuna@gmail.com', password: '123', first: 'Bill', middle: 'H', last: 'Warrick', age: 22, address: '151 Midcrest way, San Francisco, CA, 94142'})
+    User.create({email: 'someone@gmail.com', password: '123', first: 'Kelly', middle: 'V', last: 'Smith', age: 20, address: '172 nw 113th ave, Orlando, FL 32695'}),
+    User.create({email: 'BlueTuna@gmail.com', password: '123', first: 'Gill', middle: 'H', last: 'Brown', age: 22, address: '151 Midcrest way, Sonoma, CA, 84147'})
   ])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 
-// We've separated the `seed` function from the `runSeed` function.
-// This way we can isolate the error handling and exit trapping.
-// The `seed` function is concerned only with modifying the database.
+
 async function runSeed() {
   console.log('seeding...')
   try {
@@ -34,12 +32,9 @@ async function runSeed() {
   }
 }
 
-// Execute the `seed` function, IF we ran this module directly (`node seed`).
-// `Async` functions always return a promise, so we can use `catch` to handle
-// any errors that might occur inside of `seed`.
 if (module === require.main) {
   runSeed()
 }
 
-// we export the seed function for testing purposes (see `./seed.spec.js`)
+
 module.exports = seed

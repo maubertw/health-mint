@@ -27,8 +27,8 @@ const AuthForm = props => {
       {
         name === 'login' &&  <h1 className='teal'>Login</h1>
       }
-      <form className={name === 'login' ? 'login-form' : 'walkthrough-form'}    onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
-
+      <form className={name === 'login' ? 'login-form' : 'walkthrough-form'}
+      onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -52,13 +52,7 @@ const AuthForm = props => {
   )
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
+
 const mapLogin = state => {
   return {
     name: 'login',
@@ -100,7 +94,6 @@ const mapDispatchSignup = dispatch => {
 const mapDispatchLogin = dispatch => {
   return {
     handleSubmit(evt) {
-      console.log(evt.target.email.value)
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
@@ -113,9 +106,7 @@ const mapDispatchLogin = dispatch => {
 export const Login = connect(mapLogin, mapDispatchLogin)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatchSignup)(AuthForm)
 
-/**
- * PROP TYPES
- */
+
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
