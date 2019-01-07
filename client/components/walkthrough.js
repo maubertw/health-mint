@@ -8,8 +8,8 @@ import PatientContactForm from './patient-contact.js'
 const Walkthrough = (props) => {
     const page = props.history.location.pathname
     return (
-      <div>
-        <h1>HealthMint Sign Up</h1>
+      <div className='walkthrough-container'>
+        <h1 className='teal'>HealthMint Sign Up</h1>
         {
           page === '/walkthrough/info' ? <PatientInfoForm /> : <PatientContactForm />
         }

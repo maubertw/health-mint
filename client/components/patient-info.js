@@ -19,13 +19,14 @@ class PatientInfoForm extends Component {
 
   render(){
     return(
-      <div>
-        <h3>First, please tell us a little about yourself</h3>
-        <form onChange={this.handleChange}>
-            First name: <input type="text" name="first" /><br/>
-            Middle name (optional): <input type="text" name="middle"/><br/>
-            Last name: <input type="text" name="last"/><br/>
-            Age: <select name='age'>
+      <>
+      <div className='login-box'>
+      <h3 className='teal'>First, please tell us a little about yourself</h3>
+        <form className='walkthrough-form' onChange={this.handleChange}>
+            <div>First name: <input type="text" name="first" /></div><br/>
+            <div>Middle name (optional): <input type="text" name="middle"/></div><br/>
+            <div>Last name: <input type="text" name="last"/></div><br/>
+            <div>Age: <select name='age'>
               {
                 new Array(100).fill('opt').map((option, i) => {
                   if(i === 0){
@@ -36,9 +37,11 @@ class PatientInfoForm extends Component {
                 })
               }
             </select>
+            </div>
         </form>
-        <button onClick={this.nextPage} >Save and Continue</button>
-      </div>)
+        <button className='teal signup-link' onClick={this.nextPage} >Save and Continue</button>
+      </div>
+      </>)
   }
 }
 

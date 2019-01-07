@@ -76,7 +76,7 @@ nav div{
 
 }
 
-form.login-form {
+.login-form {
   height: 125px;
   width: 250px;
   display: flex;
@@ -87,6 +87,23 @@ form.login-form {
 
 }
 
+.walkthrough-form {
+  height: 125px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0 50px 0;
+  margin-top: 40px
+
+}
+
+.walkthrough-form div {
+  width: 250px;
+  display: flex;
+  justify-content: space-between
+}
 
 
 .login-form div {
@@ -111,6 +128,17 @@ a {
 
 .teal {
   color: #004d4d
+}
+
+.walkthrough-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box h3 {
+  margin-top: 50px;
+
 }
 
 /* label {

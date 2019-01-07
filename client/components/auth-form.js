@@ -12,17 +12,23 @@ const AuthForm = props => {
 
   return (
     <div className='splash'>
+    {
+       name === 'signup' &&  <h1 className='teal'>HealthMint Sign Up</h1>
+    }
       <div className='login-box'>
-      <div className='splash-header'>
-      <h1 className='splash-title teal'>Welcome to HealthMint!</h1>
-      </div>
-      <h1 className='teal'>Login</h1>
-      <form className='login-form' onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
-      <div>
         {
-          name === 'signup' && <p>Please choose an email and password for this account.  Your email will be used as the username for this account</p>
+          name === 'signup' && <h3>Please choose an email and password for your account</h3>
         }
+      <div className={name === 'login' ? 'splash-header' : '' }  >
+      {
+        name === 'login' &&  <h1 className='splash-title teal'>Welcome to HealthMint!</h1>
+      }
       </div>
+      {
+        name === 'login' &&  <h1 className='teal'>Login</h1>
+      }
+      <form className={name === 'login' ? 'login-form' : 'walkthrough-form'}    onSubmit={name === 'login' ? handleSubmit : (e) => handleSubmit(e, props.newPatient)} name={name}>
+
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -35,12 +41,12 @@ const AuthForm = props => {
           </label>
           <input name="password" type="password" />
         </div>
-
-          <button type="submit">{displayName}</button>
-
+          <button className={name === 'signup' ? 'teal signup-link' : ''} type="submit">{displayName}</button>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <NavLink to='/walkthrough/info' className='teal signup-link'><h1> or SignUp!</h1></NavLink>
+      {
+        name === 'login' && <NavLink to='/walkthrough/info' className='teal signup-link'><h1> or SignUp!</h1></NavLink>
+      }
       </div>
     </div>
   )
@@ -83,7 +89,6 @@ const mapDispatchSignup = dispatch => {
   return {
     handleSubmit(evt, patient) {
       evt.preventDefault()
-      console.log('patient', patient)
       const email = evt.target.email.value
       const password = evt.target.password.value
       const formName = evt.target.name
@@ -95,6 +100,7 @@ const mapDispatchSignup = dispatch => {
 const mapDispatchLogin = dispatch => {
   return {
     handleSubmit(evt) {
+      console.log(evt.target.email.value)
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value

@@ -31,16 +31,15 @@ class PatientContactForm extends Component {
 
   render(){
     return(
-      <div>
-        <h3>Next we will need your contact information</h3>
-        <form onChange={this.handleChange}>
-            Street Address: <input type="text" name="street" /><br/>
-            City: <input type="text" name="city"/><br/>
-            State: <input type="text" name="state"/><br/>
-            Zip: <input type="text" name="zip"/><br/>
+      <div className='login-box'>
+        <h3>Next, we will need your contact information</h3>
+        <form className='walkthrough-form' onChange={this.handleChange}>
+            <div>Street Address: <input type="text" name="street" /></div><br/>
+            <div>City: <input type="text" name="city"/></div><br/>
+            <div>State: <input type="text" name="state"/></div><br/>
+            <div>Zip: <input type="text" name="zip"/></div><br/>
         </form>
-        <button onClick={this.handleSubmit}>save and continue</button>
-        <button onClick={this.props.changePage}>back</button>
+        <button className='teal signup-link' onClick={this.handleSubmit}>save and continue</button>
       </div>)
   }
 }
